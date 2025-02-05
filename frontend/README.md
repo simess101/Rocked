@@ -1,70 +1,201 @@
-# Getting Started with Create React App
+# Rocked - Gym Management System
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Rocked is a full-stack gym management system with rock climbing route tracking and user registration. This README provides detailed instructions for setting up and running the project locally.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+- [Features](#features)
+- [Prerequisites](#prerequisites)
+- [Project Structure](#project-structure)
+- [Setup Instructions](#setup-instructions)
+  - [1. Clone the Repository](#1-clone-the-repository)
+  - [2. Backend Setup](#2-backend-setup)
+  - [3. Frontend Setup](#3-frontend-setup)
+  - [4. Database Setup](#4-database-setup)
+- [Running the Application](#running-the-application)
+- [Troubleshooting](#troubleshooting)
+- [Notes](#notes)
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- User registration (with username, email, password) and login
+- Role-based access (admin, routesetter, member, guest)
+- Manage gym boulders and climbing routes
+- Submit feedback and track route completions
+- Fully responsive rock climbing–themed frontend
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Prerequisites
 
-### `npm test`
+Before you begin, ensure you have the following installed on your system:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- [Node.js](https://nodejs.org/) (LTS version recommended)
+- [npm](https://www.npmjs.com/) (comes with Node.js)
+- [PostgreSQL](https://www.postgresql.org/) (version 12+ recommended)
+- (Optional) A SQL client like pgAdmin or DBeaver for managing the database
 
-### `npm run build`
+## Project Structure
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Rocked/
+├── backend/
+│   ├── node_modules/
+│   ├── routes/
+│   │   └── auth.js
+│   ├── db.js
+│   ├── server.js
+│   ├── package.json
+│   └── .env
+├── frontend/
+│   ├── node_modules/
+│   ├── public/
+│   │   └── index.html
+│   ├── src/
+│   │   ├── assets/
+│   │   │   └── images/
+│   │   │       └── rock-climbing-bg.jpg
+│   │   ├── components/
+│   │   │   ├── Footer.js
+│   │   │   ├── Header.js
+│   │   │   ├── LoadingSpinner.js
+│   │   │   └── NavigationBar.js
+│   │   ├── context/
+│   │   │   └── AuthContext.js
+│   │   ├── pages/
+│   │   │   ├── BoulderDetail.js
+│   │   │   ├── BoulderList.js
+│   │   │   ├── Dashboard.js
+│   │   │   ├── LoginPage.js
+│   │   │   ├── NotFoundPage.js
+│   │   │   ├── RegisterPage.js
+│   │   │   └── RouteDetail.js
+│   │   ├── routes/
+│   │   │   ├── AppRoutes.js
+│   │   │   └── PrivateRoute.js
+│   │   ├── services/
+│   │   │   ├── authService.js
+│   │   │   ├── boulderService.js
+│   │   │   └── routeService.js
+│   │   ├── styles/
+│   │   │   └── global.css
+│   │   ├── App.js
+│   │   └── index.js
+│   ├── package.json
+│   └── .env
+└── README.md
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Setup Instructions 
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### 1. Clone the Repository  
+Clone the repository to your local machine: 
+`git clone https://github.com/yourusername/rocked.git cd rocked`
 
-### `npm run eject`
+### 2. Backend Setup
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Navigate to the backend folder:**
+    
+    `cd backend`
+    
+2. **Install dependencies:**
+    
+    `npm install`
+    
+3. **Set up Environment Variables:**
+    
+    Create a `.env` file in the `backend` folder with the following content (adjust values as needed):
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+    `PORT=5001 DB_USER=your_db_username DB_PASSWORD=your_db_password DB_NAME=gym_management DB_HOST=localhost DB_PORT=5432`
+    
+4. **Database Setup:**
+    
+    - **Create the Database:** Open your terminal and access `psql`:
+        
+        `psql -U your_db_username`
+        
+5. **Start the Backend Server:**
+    
+    `node server.js`
+    
+    You should see a message indicating that the server is running on port 5001.
+    
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### 3. Frontend Setup
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. **Navigate to the frontend folder:**
 
-## Learn More
+    `cd ../frontend`
+    
+2. **Install dependencies:**
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+    `npm install`
+    
+3. **Set up Environment Variables:**
+    
+    Create a `.env` file in the `frontend` folder (if using environment variables) with content similar to:
+    
+    `REACT_APP_API_BASE_URL=http://localhost:5001/api`
+    
+4. **Start the Frontend Development Server:**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+    
+    `npm start`
+    
+    The frontend should open in your default browser (usually on [http://localhost:3000](http://localhost:3000)).
+    
 
-### Code Splitting
+### 4. Database Verification
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To check who has registered, you can connect to the PostgreSQL database using `psql` or a GUI tool:
 
-### Analyzing the Bundle Size
+- **Using psql:**
+    
+    `psql -d gym_management -U your_db_username`
+    
+    Then run:
+    
+    `SELECT * FROM users;`
+    
+- **Using pgAdmin/DBeaver:**  
+    Connect to the `gym_management` database and browse the `users` table.
+    
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Running the Application
 
-### Making a Progressive Web App
+1. **Start the Backend:**  
+    Ensure the backend server is running:
+    
+    `cd backend node server.js`
+    
+2. **Start the Frontend:**  
+    In a separate terminal:
+    
+    `cd frontend npm start`
+    
+3. **Register and Login:**  
+    Use the frontend to register new users and log in. Check your database to confirm that user data is stored correctly.
+    
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Troubleshooting
 
-### Advanced Configuration
+- **404 Not Found:**  
+    Ensure that the backend routes (e.g., `/api/register`) are correctly mounted.
+- **Database Connection Errors:**  
+    Verify that your environment variables for database connection are correct.
+- **Dependency Issues:**  
+    If you see errors related to missing modules (e.g., `bcrypt`), run `npm install` in the appropriate folder.
+- **Port Conflicts:**  
+    Confirm that no other services are using ports 5001 (backend) or 3000 (frontend).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Notes
 
-### Deployment
+- **Password Security:**  
+    Passwords are hashed using bcrypt before storing in the database.
+- **Environment Variables:**  
+    Keep sensitive information (e.g., database passwords) in your `.env` files and do not commit them to version control.
+- **Further Customization:**  
+    As the project grows, consider using migration tools (like Knex.js or Flyway) to manage database schema changes.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+## Conclusion
 
-### `npm run build` fails to minify
+Following these instructions should allow you to set up the project locally and get it running quickly—even if you step away for a while. If you encounter any issues or have questions, please refer to this README or reach out for further assistance.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+- This README should serve as a comprehensive guide for anyone (including future me) to launch the program locally, covering everything from dependency installation to running the servers and verifying the database.
