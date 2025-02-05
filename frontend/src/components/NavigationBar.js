@@ -21,7 +21,9 @@ const NavigationBar = () => {
           <Link to="/boulders" style={{ marginRight: '1rem', color: '#fff' }}>
             Boulders
           </Link>
-          {/* You can add more authenticated links here if needed */}
+          <Link to="/checkins" style={{ marginRight: '1rem', color: '#fff' }}>
+            Check-Ins
+          </Link>
           <button
             onClick={handleLogout}
             style={{

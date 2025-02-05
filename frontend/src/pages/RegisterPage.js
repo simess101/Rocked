@@ -11,6 +11,8 @@ const RegisterPage = () => {
     username: '',
     email: '',
     password: '',
+    firstName: '',
+    lastName: '',
   });
   const [error, setError] = useState(null);
 
@@ -21,7 +23,7 @@ const RegisterPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Call the register API endpoint
+      // Call the register API endpoint with all credentials
       const userData = await registerService(credentials);
       // Optionally, log in the user immediately after registration
       login(userData);
@@ -43,6 +45,28 @@ const RegisterPage = () => {
             type="text"
             name="username"
             value={credentials.username}
+            onChange={handleChange}
+            required
+            style={{ width: '100%', padding: '0.5rem' }}
+          />
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <label>First Name:</label>
+          <input
+            type="text"
+            name="firstName"
+            value={credentials.firstName}
+            onChange={handleChange}
+            required
+            style={{ width: '100%', padding: '0.5rem' }}
+          />
+        </div>
+        <div style={{ marginBottom: '1rem' }}>
+          <label>Last Name:</label>
+          <input
+            type="text"
+            name="lastName"
+            value={credentials.lastName}
             onChange={handleChange}
             required
             style={{ width: '100%', padding: '0.5rem' }}

@@ -7,6 +7,7 @@ import Dashboard from '../pages/Dashboard';
 import BoulderList from '../pages/BoulderList';
 import BoulderDetail from '../pages/BoulderDetail';
 import RouteDetail from '../pages/RouteDetail';
+import CheckInScreen from '../pages/CheckInScreen';
 import NotFoundPage from '../pages/NotFoundPage';
 import PrivateRoute from './PrivateRoute';
 
@@ -15,6 +16,7 @@ const AppRoutes = () => {
     <Routes>
       <Route path="/login" element={<LoginPage />} />
       <Route path="/register" element={<RegisterPage />} />
+      <Route path="/checkins" element={<PrivateRoute><CheckInScreen /></PrivateRoute>} />
       <Route
         path="/"
         element={

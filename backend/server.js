@@ -2,7 +2,8 @@
 const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const authRouter = require('./routes/auth');  // Now this file exists
+const authRouter = require('./routes/auth');
+const checkinsRouter = require('./routes/checkins'); // <-- Import checkins routes
 
 const app = express();
 const PORT = process.env.PORT || 5001;
@@ -11,10 +12,9 @@ const PORT = process.env.PORT || 5001;
 app.use(cors());
 app.use(bodyParser.json());
 
-// Mount the auth router at /api
+// Mount routers
 app.use('/api', authRouter);
-
-// You can mount other routers here if needed
+app.use('/api/checkins', checkinsRouter); // <-- This will map /api/checkins/* endpoints
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
